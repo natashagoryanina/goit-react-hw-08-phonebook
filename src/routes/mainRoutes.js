@@ -1,25 +1,26 @@
-import HomePage from "../pages/home-page/HomePage";
-import LoginPage from "../pages/login-page/LoginPage";
-import RegisterPage from "../pages/register-page/RegisterPage";
+import { lazy } from "react";
 
 const mainRoutes = [
     {
         name: 'Home',
         path: '/',
-        component: HomePage,
-        exact: true
+        exact: true,
+        component: lazy(() => import("../pages/home-page/HomePage" 
+        /* webpackChunkName: 'HomePage' */))
     },
     {
         name: 'Registration',
         path: '/register',
-        component: RegisterPage,
-        exact: false
+        exact: false,
+        component: lazy(() => import("../pages/register-page/RegisterPage"
+        /* webpackChunkName: 'RegisterPage' */))
     },
     {
         name: 'Login',
         path: '/login',
-        component: LoginPage,
-        exact: false
+        exact: false,
+        component: lazy(() => import("../pages/login-page/LoginPage"
+        /* webpackChunkName: 'LoginPage' */))
     },
 ];
 

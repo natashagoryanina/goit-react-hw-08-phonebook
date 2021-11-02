@@ -6,6 +6,7 @@ import {
     signUpRequest,
     logOutRequest,
     logOutError,
+    logOutSuccess,
     currentUserRequest,
     currentUserError } from './auth/authActions';
 import { 
@@ -31,6 +32,7 @@ const errorReducer = createReducer(null, {
     [signUpRequest]: () => null,
     [logOutRequest]: () => null,
     [currentUserRequest]: () => null,
+    [logOutSuccess]: () => '',
 });
 
 export { errorReducer };

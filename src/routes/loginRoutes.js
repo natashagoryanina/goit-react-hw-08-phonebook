@@ -1,18 +1,19 @@
-import ContactsPage from "../pages/contacts-page/ContactsPage";
-import HomePage from "../pages/home-page/HomePage";
+import { lazy } from "react";
 
 const loginRoutes = [
     {
         name: 'Home',
         path: '/',
-        component: HomePage,
-        exact: true
+        exact: true,
+        component: lazy(() => import("../pages/home-page/HomePage" 
+        /* webpackChunkName: 'HomePage' */))
     },
     {
         name: 'Contacts',
         path: '/contacts',
-        component: ContactsPage,
-        exact: false
+        exact: false,
+        component: lazy(() => import("../pages/contacts-page/ContactsPage" 
+        /* webpackChunkName: 'ContactsPage' */))
     }
 ];
 

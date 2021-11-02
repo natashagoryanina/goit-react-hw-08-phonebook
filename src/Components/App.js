@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {Suspense, useEffect} from 'react';
 import { Redirect, Route, Switch } from 'react-router';
 import GlobalStyles from '../styles/globalStyles';
 import { useSelector, useDispatch } from 'react-redux';
@@ -25,31 +25,36 @@ const App = () => {
             <GlobalStyles></GlobalStyles>
             <Header/>
             {loading && <h3>Loading...</h3>}
+            <Suspense fallback = {<h3>Loading...</h3>}>
             <Switch>
                 <Route path='/' exact>
                     <HomePage/>
                 </Route>
 
-                <Route path='/register'>
-                    <RegisterPage/>
-                </Route>
+                {!isLoggedIn && 
+                    <>
+                        <Route path='/login'>
+                            <LoginPage/>
+                        </Route>
+                        <Route path='/register'>
+                            <RegisterPage/>
+                        </Route>
+                        <Redirect to='/login'>
+                        </Redirect>
+                    </>
+                }
 
-                <Route path='/login'>
-                    <LoginPage/>
-                </Route>
-                
-                {isLoggedIn ? 
+                {isLoggedIn && 
                     <Route path='/contacts'>
                         <ContactsPage/>
-                    </Route> :
-                    <Redirect to='/login'>
-                    </Redirect>
+                    </Route> 
                 }
 
                 <Route>
                     <HomePage/>
                 </Route>
             </Switch>
+            </Suspense>
         </main>
     );
 };

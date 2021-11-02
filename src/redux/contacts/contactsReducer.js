@@ -1,4 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
+import { logOutSuccess } from '../auth/authActions';
 import { 
     getContactRequest,
     getContactSuccess,
@@ -18,6 +19,7 @@ const contactsReducer = createReducer([], {
     [deleteContactSuccess]: (state, {payload}) => {
         return state.filter(contact => contact.id !== payload);
     },
+    [logOutSuccess]: () => [],
 });
 
 const loadingReducer = createReducer(false, {
@@ -30,6 +32,7 @@ const loadingReducer = createReducer(false, {
     [deleteContactRequest]: () => true,
     [deleteContactSuccess]: () => false,
     [deleteContactError]: () => false,
+    [logOutSuccess]: () => false,
 });
 
 export { contactsReducer, loadingReducer};

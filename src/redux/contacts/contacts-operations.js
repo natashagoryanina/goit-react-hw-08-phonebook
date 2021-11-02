@@ -29,7 +29,7 @@ const fetchContacts = () => async dispatch => {
     // .catch(error => dispatch(getContactError(error)))
 };
 
-const addContact = contact => dispatch => {
+const addContact = contact => (dispatch) => {
     dispatch(addContactRequest());
 
     axios
