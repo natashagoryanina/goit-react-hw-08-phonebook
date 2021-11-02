@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { useSelector, useDispatch } from 'react-redux';
 import { addContact } from '../../redux/contacts/contacts-operations';
 import { FormContainer } from './ContactsFormStyled';
-import { contactSelector } from '../../redux/contacts-selectors';
+import { contactSelector } from '../../redux/selectors';
 
 const initialState = { 
     name: '',

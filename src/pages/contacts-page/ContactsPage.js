@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import ContactsForm from '../../Components/contactsForm/ContactsForm';
 import ContactsList from '../../Components/contactsList/ContactsList';
 import Filter from '../../Components/filter/Filter';
-import { loadingSelector } from '../../redux/contacts-selectors';
+import { loadingSelector } from '../../redux/selectors';
 
 const ContactsPage = () => {
     const loading = useSelector(loadingSelector);

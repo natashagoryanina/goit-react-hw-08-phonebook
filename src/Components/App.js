@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
-import { Route, Switch } from 'react-router';
+import { Redirect, Route, Switch } from 'react-router';
 import GlobalStyles from '../styles/globalStyles';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchContacts } from '../redux/contacts/contacts-operations';
-import { loadingSelector } from '../redux/contacts-selectors';
+import { isLoggedInSelector, loadingSelector } from '../redux/selectors';
 import Header from './header/Header';
 import HomePage from '../pages/home-page/HomePage';
 import ContactsPage from '../pages/contacts-page/ContactsPage';
@@ -12,6 +12,7 @@ import RegisterPage from '../pages/register-page/RegisterPage';
 
 const App = () => {
     const loading = useSelector(loadingSelector);
+    const isLoggedIn = useSelector(isLoggedInSelector);
 
     const dispatch = useDispatch();
     
@@ -36,10 +37,14 @@ const App = () => {
                 <Route path='/login'>
                     <LoginPage/>
                 </Route>
-
-                <Route path='/contacts'>
-                    <ContactsPage/>
-                </Route>
+                
+                {isLoggedIn ? 
+                    <Route path='/contacts'>
+                        <ContactsPage/>
+                    </Route> :
+                    <Redirect to='/login'>
+                    </Redirect>
+                }
 
                 <Route>
                     <HomePage/>

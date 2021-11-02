@@ -1,4 +1,3 @@
-import ContactsPage from "../pages/contacts-page/ContactsPage";
 import HomePage from "../pages/home-page/HomePage";
 import LoginPage from "../pages/login-page/LoginPage";
 import RegisterPage from "../pages/register-page/RegisterPage";
@@ -22,12 +21,6 @@ const mainRoutes = [
         component: LoginPage,
         exact: false
     },
-    {
-        name: 'Contacts',
-        path: '/contacts',
-        component: ContactsPage,
-        exact: false
-    }
 ];
 
 export default mainRoutes;
